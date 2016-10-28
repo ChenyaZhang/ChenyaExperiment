@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NewUserRegisterViewController.h
 //  ChenyaExperiment
 //
 //  Created by Chenya Zhang on 10/28/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface NewUserRegisterViewController : UIViewController
 
 @end
-

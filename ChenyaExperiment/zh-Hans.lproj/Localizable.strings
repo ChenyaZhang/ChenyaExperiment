@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  ChenyaExperiment
+
+  Created by Chenya Zhang on 10/28/16.
+  Copyright © 2016 Chenya Zhang. All rights reserved.
+*/
+
+"Create a " = "创建一个";
+
+"free, private " = "免费的私人";
+
+"account or login" = "账户或登录";
+
+"Your email " = "你的邮箱";
+
+"Password(6+ characters) " = "密码（六位以上）";
+
+"You agree to our " = "你同意我们的";
+
+"Terms " = "条款";
+
+"and " = "和";
+
+"Privacy Policy " = "隐私政策";
+
+"Are you a member? " = "你是会员吗？ ";
+
+"Login > " = "登录 >";
+
+"Are you a doctor? " = "你是医生吗？ ";
+
+"Try our doctor app > " = "请尝试医生版应用 > ";
