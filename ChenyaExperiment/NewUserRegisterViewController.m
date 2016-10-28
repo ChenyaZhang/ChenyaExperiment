@@ -13,9 +13,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *instructionUILabel;
 @property (strong, nonatomic) IBOutlet UITextField *emailUITextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordUITextField;
-@property (strong, nonatomic) IBOutlet UILabel *agreementUILabel;
-@property (strong, nonatomic) IBOutlet UILabel *memberUILabel;
-@property (strong, nonatomic) IBOutlet UILabel *doctorUILabel;
+@property (strong, nonatomic) IBOutlet UITextView *agreementUITextView;
+@property (strong, nonatomic) IBOutlet UITextView *memberUITextView;
+@property (strong, nonatomic) IBOutlet UITextView *doctorUITextView;
 @end
 
 @implementation NewUserRegisterViewController
@@ -24,15 +24,18 @@
     [super viewDidLoad];
     
     // UILabel-Instruction
-    NSMutableAttributedString *instruction1NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Create a ", nil) attributes:@{
+    // Need a whole sentence for better translation
+    NSMutableAttributedString *instructionNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Create a free, private account or login", nil) attributes:@{
                                                                                                                                                                          NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:18.5]}];
-    NSMutableAttributedString *instruction2NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"free, private ", nil) attributes:@{
-                                                                                                                                                                         NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:18.5]}];
-    NSMutableAttributedString *instruction3NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"account or login", nil) attributes:@{
-                                                                                                                                                                               NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:18.5]}];
-    [instruction1NSMutableAttributedString appendAttributedString:instruction2NSMutableAttributedString];
-    [instruction1NSMutableAttributedString appendAttributedString:instruction3NSMutableAttributedString];
-    self.instructionUILabel.attributedText = instruction1NSMutableAttributedString;
+    // Get the special string according to its translation
+    NSString *freeNSString = NSLocalizedString(@"free", nil);
+    NSString *privateNSString = NSLocalizedString(@"private", nil);
+    // Get its range
+    NSRange rangeOfFreeNSString = [[instructionNSMutableAttributedString string] rangeOfString:freeNSString];
+    NSRange rangeOfPrivateNSString = [[instructionNSMutableAttributedString string] rangeOfString:privateNSString];
+    [instructionNSMutableAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir-Heavy" size:18.5] range:rangeOfFreeNSString];
+    [instructionNSMutableAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir-Heavy" size:18.5] range:rangeOfPrivateNSString];
+    self.instructionUILabel.attributedText = instructionNSMutableAttributedString;
     [self.instructionUILabel sizeToFit];
     
     // UITextField-Email
@@ -47,38 +50,53 @@
     self.passwordUITextField.placeholder = [passwordNSMutableAttributedString string];
     self.passwordUITextField.textAlignment = NSTextAlignmentCenter;
     
-    // UILabel-Agreement
-    NSMutableAttributedString *agreement1NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You agree to our ", nil) attributes:@{
+    // UITextView-Agreement
+    // Only UITextView supports open URL
+    NSMutableAttributedString *agreementNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You agree to our Terms and Privacy Policy", nil) attributes:@{
                                                                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSMutableAttributedString *agreement2NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Terms ", nil) attributes:@{
-                                                                                                                                                                                 NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]}];
-    NSMutableAttributedString *agreement3NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"and ", nil) attributes:@{
-                                                                                                                                                                                 NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSMutableAttributedString *agreement4NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Privacy Policy ", nil) attributes:@{
-                                                                                                                                                                    NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]}];
-    [agreement1NSMutableAttributedString appendAttributedString:agreement2NSMutableAttributedString];
-    [agreement1NSMutableAttributedString appendAttributedString:agreement3NSMutableAttributedString];
-    [agreement1NSMutableAttributedString appendAttributedString:agreement4NSMutableAttributedString];
-    self.agreementUILabel.attributedText = agreement1NSMutableAttributedString;
-    [self.agreementUILabel sizeToFit];
+    NSString *termsNSString = NSLocalizedString(@"Terms", nil);
+    NSString *privacyPolicyNSString = NSLocalizedString(@"Privacy Policy", nil);
+    NSRange rangeOfTermsNSString = [[agreementNSMutableAttributedString string] rangeOfString:termsNSString];
+    NSRange rangeOfPrivacyPolicyNSString = [[agreementNSMutableAttributedString string] rangeOfString:privacyPolicyNSString];
+    NSDictionary *termsAttributesDictionary = @{
+                                                NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
+    NSDictionary *privacyPolicyAttributesDictionary = @{
+                                                       NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
+    [agreementNSMutableAttributedString setAttributes:termsAttributesDictionary range:rangeOfTermsNSString];
+    [agreementNSMutableAttributedString setAttributes:privacyPolicyAttributesDictionary range:rangeOfPrivacyPolicyNSString];
+    self.agreementUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
+    self.agreementUITextView.attributedText = agreementNSMutableAttributedString;
+    [self.agreementUITextView sizeToFit];
+    self.agreementUITextView.textAlignment = NSTextAlignmentCenter;
+    self.agreementUITextView.editable = NO;
     
-    // UILabel-Member
-    NSMutableAttributedString *member1NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? ", nil) attributes:@{
+    // UITextView-Member
+    NSMutableAttributedString *memberNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? Login >", nil) attributes:@{
                                                                                                                                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSMutableAttributedString *member2NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Login > ", nil) attributes:@{
-                                                                                                                                                                                NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]}];
-    [member1NSMutableAttributedString appendAttributedString:member2NSMutableAttributedString];
-    self.memberUILabel.attributedText = member1NSMutableAttributedString;
-    [self.memberUILabel sizeToFit];
+    NSString *loginNSString = NSLocalizedString(@"Login >", nil);
+    NSRange rangeOfLoginNSString = [[memberNSMutableAttributedString string] rangeOfString:loginNSString];
+    NSDictionary *loginAttributesDictionary = @{
+                                                        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
+    [memberNSMutableAttributedString setAttributes:loginAttributesDictionary range:rangeOfLoginNSString];
+    self.memberUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
+    self.memberUITextView.attributedText = memberNSMutableAttributedString;
+    [self.memberUITextView sizeToFit];
+    self.memberUITextView.textAlignment = NSTextAlignmentCenter;
+    self.memberUITextView.editable = NO;
     
-    // UILabel-Doctor
-    NSMutableAttributedString *doctor1NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? ", nil) attributes:@{
-                                                                                                                                                                               NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSMutableAttributedString *doctor2NSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Try our doctor app > ", nil) attributes:@{
-                                                                                                                                                                     NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]}];
-    [doctor1NSMutableAttributedString appendAttributedString:doctor2NSMutableAttributedString];
-    self.doctorUILabel.attributedText = doctor1NSMutableAttributedString;
-    [self.doctorUILabel sizeToFit];
+    // UITextView-Doctor
+    NSMutableAttributedString *doctorNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? Try our doctor app >", nil) attributes:@{
+                                                                                                                                                                                     NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
+    NSString *doctorAppNSString = NSLocalizedString(@"Try our doctor app >", nil);
+    NSRange rangeOfDoctorAppNSString = [[doctorNSMutableAttributedString string] rangeOfString:doctorAppNSString];
+    NSDictionary *doctorAppAttributesDictionary = @{
+                                                NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
+    [doctorNSMutableAttributedString setAttributes:doctorAppAttributesDictionary range:rangeOfDoctorAppNSString];
+    self.doctorUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
+    self.doctorUITextView.attributedText = doctorNSMutableAttributedString;
+    [self.doctorUITextView sizeToFit];
+    self.doctorUITextView.textAlignment = NSTextAlignmentCenter;
+    self.doctorUITextView.editable = NO;
 }
 
 - (void)didReceiveMemoryWarning {
