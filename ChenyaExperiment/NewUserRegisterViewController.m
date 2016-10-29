@@ -56,28 +56,28 @@
     
     // UITextView-Agreement
     // Only UITextView supports open URL
-    NSMutableAttributedString *agreementNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}", nil) attributes:@{
+    NSMutableAttributedString *agreementNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}", nil) attributes:@{
                                                                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
+    rangeOfStartNSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{start}"];
+    rangeOfEndNSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{end}"];
+    startIndex = (int)(rangeOfStartNSString.location + rangeOfStartNSString.length);
+    endIndex = (int)rangeOfEndNSString.location;
+    specialRange = NSMakeRange(startIndex, endIndex - startIndex);
     NSRange rangeOfStart1NSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{start1}"];
     NSRange rangeOfEnd1NSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{end1}"];
     int start1Index = (int)(rangeOfStart1NSString.location + rangeOfStart1NSString.length);
     int end1Index = (int)rangeOfEnd1NSString.location;
     NSRange specialRange1 = NSMakeRange(start1Index, end1Index - start1Index);
-    NSRange rangeOfStart2NSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{start2}"];
-    NSRange rangeOfEnd2NSString = [[agreementNSMutableAttributedString string] rangeOfString:@"{end2}"];
-    int start2Index = (int)(rangeOfStart2NSString.location + rangeOfStart2NSString.length);
-    int end2Index = (int)rangeOfEnd2NSString.location;
-    NSRange specialRange2 = NSMakeRange(start2Index, end2Index - start2Index);
     NSDictionary *termsAttributesDictionary = @{
                                                 NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
     NSDictionary *privacyPolicyAttributesDictionary = @{
                                                        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
-    [agreementNSMutableAttributedString setAttributes:termsAttributesDictionary range:specialRange1];
-    [agreementNSMutableAttributedString setAttributes:privacyPolicyAttributesDictionary range:specialRange2];
+    [agreementNSMutableAttributedString setAttributes:termsAttributesDictionary range:specialRange];
+    [agreementNSMutableAttributedString setAttributes:privacyPolicyAttributesDictionary range:specialRange1];
+    [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{start}"]];
+    [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{end}"]];
     [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{start1}"]];
     [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{end1}"]];
-    [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{start2}"]];
-    [agreementNSMutableAttributedString deleteCharactersInRange:[[agreementNSMutableAttributedString string] rangeOfString:@"{end2}"]];
     self.agreementUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
     self.agreementUITextView.attributedText = agreementNSMutableAttributedString;
     [self.agreementUITextView sizeToFit];
@@ -85,18 +85,18 @@
     self.agreementUITextView.editable = NO;
     
     // UITextView-Member
-    NSMutableAttributedString *memberNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? {start3}Login >{end3}", nil) attributes:@{
+    NSMutableAttributedString *memberNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? {start}Login >{end}", nil) attributes:@{
                                                                                                                                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSRange rangeOfStart3NSString = [[memberNSMutableAttributedString string] rangeOfString:@"{start3}"];
-    NSRange rangeOfEnd3NSString = [[memberNSMutableAttributedString string] rangeOfString:@"{end3}"];
-    int start3Index = (int)(rangeOfStart3NSString.location + rangeOfStart3NSString.length);
-    int end3Index = (int)rangeOfEnd3NSString.location;
-    NSRange specialRange3 = NSMakeRange(start3Index, end3Index - start3Index);
+    rangeOfStartNSString = [[memberNSMutableAttributedString string] rangeOfString:@"{start}"];
+    rangeOfEndNSString = [[memberNSMutableAttributedString string] rangeOfString:@"{end}"];
+    startIndex = (int)(rangeOfStartNSString.location + rangeOfStartNSString.length);
+    endIndex = (int)rangeOfEndNSString.location;
+    specialRange = NSMakeRange(startIndex, endIndex - startIndex);
     NSDictionary *loginAttributesDictionary = @{
                                                         NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
-    [memberNSMutableAttributedString setAttributes:loginAttributesDictionary range:specialRange3];
-    [memberNSMutableAttributedString deleteCharactersInRange:[[memberNSMutableAttributedString string] rangeOfString:@"{start3}"]];
-    [memberNSMutableAttributedString deleteCharactersInRange:[[memberNSMutableAttributedString string] rangeOfString:@"{end3}"]];
+    [memberNSMutableAttributedString setAttributes:loginAttributesDictionary range:specialRange];
+    [memberNSMutableAttributedString deleteCharactersInRange:[[memberNSMutableAttributedString string] rangeOfString:@"{start}"]];
+    [memberNSMutableAttributedString deleteCharactersInRange:[[memberNSMutableAttributedString string] rangeOfString:@"{end}"]];
     self.memberUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
     self.memberUITextView.attributedText = memberNSMutableAttributedString;
     [self.memberUITextView sizeToFit];
@@ -104,18 +104,18 @@
     self.memberUITextView.editable = NO;
     
     // UITextView-Doctor
-    NSMutableAttributedString *doctorNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? {start4}Try our doctor app >{end4}", nil) attributes:@{
+    NSMutableAttributedString *doctorNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? {start}Try our doctor app >{end}", nil) attributes:@{
                                                                                                                                                                                      NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
-    NSRange rangeOfStart4NSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{start4}"];
-    NSRange rangeOfEnd4NSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{end4}"];
-    int start4Index = (int)(rangeOfStart4NSString.location + rangeOfStart4NSString.length);
-    int end4Index = (int)rangeOfEnd4NSString.location;
-    NSRange specialRange4 = NSMakeRange(start4Index, end4Index - start4Index);
+    rangeOfStartNSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{start}"];
+    rangeOfEndNSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{end}"];
+    startIndex = (int)(rangeOfStartNSString.location + rangeOfStartNSString.length);
+    endIndex = (int)rangeOfEndNSString.location;
+    specialRange = NSMakeRange(startIndex, endIndex - startIndex);
     NSDictionary *doctorAppAttributesDictionary = @{
                                                 NSFontAttributeName: [UIFont fontWithName:@"Avenir-Heavy" size:14.0], NSLinkAttributeName:[NSURL URLWithString:@"http://www.healthtap.com"]};
-    [doctorNSMutableAttributedString setAttributes:doctorAppAttributesDictionary range:specialRange4];
-    [doctorNSMutableAttributedString deleteCharactersInRange:[[doctorNSMutableAttributedString string] rangeOfString:@"{start4}"]];
-    [doctorNSMutableAttributedString deleteCharactersInRange:[[doctorNSMutableAttributedString string] rangeOfString:@"{end4}"]];
+    [doctorNSMutableAttributedString setAttributes:doctorAppAttributesDictionary range:specialRange];
+    [doctorNSMutableAttributedString deleteCharactersInRange:[[doctorNSMutableAttributedString string] rangeOfString:@"{start}"]];
+    [doctorNSMutableAttributedString deleteCharactersInRange:[[doctorNSMutableAttributedString string] rangeOfString:@"{end}"]];
     self.doctorUITextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.38 green:0.87 blue:0.80 alpha:1.0]};
     self.doctorUITextView.attributedText = doctorNSMutableAttributedString;
     [self.doctorUITextView sizeToFit];

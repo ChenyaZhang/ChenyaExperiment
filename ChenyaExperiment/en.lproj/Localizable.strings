@@ -12,8 +12,8 @@
 
 "Password(6+ characters) " = "Password(6+ characters) ";
 
-"You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}" = "You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}";
+"You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}" = "You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}";
 
-"Are you a member? {start3}Login >{end3}" = "Are you a member? {start3}Login >{end3}" ;
+"Are you a member? {start}Login >{end}" = "Are you a member? {start}Login >{end}" ;
 
-"Are you a doctor? {start4}Try our doctor app >{end4}" = "Are you a doctor? {start4}Try our doctor app >{end4}";
+"Are you a doctor? {start}Try our doctor app >{end}" = "Are you a doctor? {start}Try our doctor app >{end}";

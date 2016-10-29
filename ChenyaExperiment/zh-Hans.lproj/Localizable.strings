@@ -12,8 +12,8 @@
 
 "Password(6+ characters) " = "密码（六位以上）";
 
-"You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}" = "你同意我们的{start1}条款{end1}和{start2}隐私政策{end2}";
+"You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}" = "你同意我们的{start}条款{end}和{start1}隐私政策{end1}";
 
-"Are you a member? {start3}Login >{end3}" = "你是会员吗？{start3}登录 >{end3}";
+"Are you a member? {start}Login >{end}" = "你是会员吗？{start}登录 >{end}";
 
-"Are you a doctor? {start4}Try our doctor app >{end4}" = "你是医生吗？{start4}请尝试医生版应用 >{end4}";
+"Are you a doctor? {start}Try our doctor app >{end}" = "你是医生吗？{start}请尝试医生版应用 >{end}";
