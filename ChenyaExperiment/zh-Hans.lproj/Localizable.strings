@@ -6,26 +6,14 @@
   Copyright © 2016 Chenya Zhang. All rights reserved.
 */
 
-"Create a free, private account or login" = "创建一个免费的私人账户或登录";
-
-"free" = "免费";
-
-"private" = "私人";
+"Create a {start}free, private{end} account or login" = "创建一个{start}免费的私人{end}账户或登录";
 
 "Your email " = "你的邮箱";
 
 "Password(6+ characters) " = "密码（六位以上）";
 
-"You agree to our Terms and Privacy Policy" = "你同意我们的条款和隐私政策";
+"You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}" = "你同意我们的{start1}条款{end1}和{start2}隐私政策{end2}";
 
-"Terms" = "条款";
+"Are you a member? {start3}Login >{end3}" = "你是会员吗？{start3}登录 >{end3}";
 
-"Privacy Policy" = "隐私政策";
-
-"Are you a member? Login >" = "你是会员吗？登录 >";
-
-"Login >" = "登录 >";
-
-"Are you a doctor? Try our doctor app >" = "你是医生吗？请尝试医生版应用 >";
-
-"Try our doctor app >" = "请尝试医生版应用 >";
+"Are you a doctor? {start4}Try our doctor app >{end4}" = "你是医生吗？{start4}请尝试医生版应用 >{end4}";

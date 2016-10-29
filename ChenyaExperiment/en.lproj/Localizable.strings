@@ -6,26 +6,14 @@
   Copyright © 2016 Chenya Zhang. All rights reserved.
 */
 
-"Create a free, private account or login" = "Create a free, private account or login";
-
-"free" = "free";
-
-"private" = "private";
+"Create a {start}free, private{end} account or login" = "Create a {start}free, private{end} account or login";
 
 "Your email " = "Your email ";
 
 "Password(6+ characters) " = "Password(6+ characters) ";
 
-"You agree to our Terms and Privacy Policy" = "You agree to our Terms and Privacy Policy";
+"You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}" = "You agree to our {start1}Terms{end1} and {start2}Privacy Policy{end2}";
 
-"Terms" = "Terms";
+"Are you a member? {start3}Login >{end3}" = "Are you a member? {start3}Login >{end3}" ;
 
-"Privacy Policy" = "Privacy Policy";
-
-"Are you a member? Login >" = "Are you a member? Login >";
-
-"Login >" = "Login >";
-
-"Are you a doctor? Try our doctor app >" = "Are you a doctor? Try our doctor app >";
-
-"Try our doctor app >" = "Try our doctor app >";
+"Are you a doctor? {start4}Try our doctor app >{end4}" = "Are you a doctor? {start4}Try our doctor app >{end4}";
