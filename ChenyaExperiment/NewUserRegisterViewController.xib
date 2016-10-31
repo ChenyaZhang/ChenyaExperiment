@@ -16,6 +16,7 @@
                 <outlet property="instructionUILabel" destination="41y-2r-Xoj" id="rWh-ce-2i4"/>
                 <outlet property="memberUITextView" destination="1dD-TY-4Ay" id="eNU-KE-TP8"/>
                 <outlet property="passwordUITextField" destination="sAt-3c-e6C" id="5yX-Qv-ihJ"/>
+                <outlet property="userCountTextView" destination="bDM-23-sfG" id="ZJK-Ho-vUA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,6 +57,11 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HealthTap-pin" translatesAutoresizingMaskIntoConstraints="NO" id="m93-KJ-F0p"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bDM-23-sfG">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -71,8 +77,11 @@
                 <constraint firstItem="1dD-TY-4Ay" firstAttribute="centerX" secondItem="bVq-2Z-w4l" secondAttribute="centerX" id="SqR-J2-s0b"/>
                 <constraint firstItem="ZzC-UV-HkR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TSt-rT-x8u"/>
                 <constraint firstItem="sAt-3c-e6C" firstAttribute="height" secondItem="ZzC-UV-HkR" secondAttribute="height" id="Tr2-7z-inH"/>
+                <constraint firstItem="bDM-23-sfG" firstAttribute="width" secondItem="bVq-2Z-w4l" secondAttribute="width" id="UWI-BU-vmv"/>
                 <constraint firstItem="ZzC-UV-HkR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.25" id="V2W-P7-QLt"/>
+                <constraint firstItem="bDM-23-sfG" firstAttribute="centerX" secondItem="bVq-2Z-w4l" secondAttribute="centerX" id="VBd-js-MfE"/>
                 <constraint firstItem="bVq-2Z-w4l" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05" id="aD4-rt-DaR"/>
+                <constraint firstItem="bDM-23-sfG" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.3" id="bTn-J0-UG8"/>
                 <constraint firstItem="m93-KJ-F0p" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.04" id="d4f-El-Glo"/>
                 <constraint firstItem="sAt-3c-e6C" firstAttribute="width" secondItem="ZzC-UV-HkR" secondAttribute="width" id="fbv-gW-ESk"/>
                 <constraint firstItem="m93-KJ-F0p" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.04" id="fy8-ov-FUX"/>
@@ -88,6 +97,7 @@
                 <constraint firstItem="sFF-pJ-pUk" firstAttribute="width" secondItem="ZzC-UV-HkR" secondAttribute="width" id="shr-f3-9fa"/>
                 <constraint firstItem="FxM-hG-hWZ" firstAttribute="height" secondItem="1dD-TY-4Ay" secondAttribute="height" id="vtO-ie-VFR"/>
                 <constraint firstItem="1dD-TY-4Ay" firstAttribute="height" secondItem="bVq-2Z-w4l" secondAttribute="height" id="xrG-Se-ZIO"/>
+                <constraint firstItem="bDM-23-sfG" firstAttribute="height" secondItem="bVq-2Z-w4l" secondAttribute="height" id="yIp-gM-OR2"/>
                 <constraint firstItem="bVq-2Z-w4l" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.15" id="zXG-1w-txd"/>
             </constraints>
         </view>

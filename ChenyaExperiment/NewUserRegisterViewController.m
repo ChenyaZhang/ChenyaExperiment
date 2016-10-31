@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *agreementUITextView;
 @property (strong, nonatomic) IBOutlet UITextView *memberUITextView;
 @property (strong, nonatomic) IBOutlet UITextView *doctorUITextView;
+@property (strong, nonatomic) IBOutlet UITextView *userCountTextView;
 @end
 
 @implementation NewUserRegisterViewController
@@ -43,13 +44,13 @@
     [self.instructionUILabel sizeToFit];
     
     // UITextField-Email
-    NSMutableAttributedString *emailNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Your email ", nil) attributes:@{
+    NSMutableAttributedString *emailNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Your email ", @"Ask the user to enter his/her email") attributes:@{
                                                                                                                                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:18.5]}];
     self.emailUITextField.placeholder = [emailNSMutableAttributedString string];
     self.emailUITextField.textAlignment = NSTextAlignmentCenter;
     
     // UITextField-Password
-    NSMutableAttributedString *passwordNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Password(6+ characters) ", nil) attributes:@{
+    NSMutableAttributedString *passwordNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Password(6+ characters) ", @"Ask the user to enter his/her password") attributes:@{
                                                                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:18.5]}];
     self.passwordUITextField.placeholder = [passwordNSMutableAttributedString string];
     self.passwordUITextField.textAlignment = NSTextAlignmentCenter;
@@ -84,8 +85,17 @@
     self.agreementUITextView.textAlignment = NSTextAlignmentCenter;
     self.agreementUITextView.editable = NO;
     
+    // UITextView-User Count
+    NSString *messageFormat = NSLocalizedString(@"Now %1$lu registered users in total", @"The parameter will be the current number of registered users.");
+    NSMutableAttributedString *userCountNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:messageFormat attributes:@{
+                                                                                                                                                                                                                                                                NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
+    self.userCountTextView.attributedText = userCountNSMutableAttributedString;
+    [self.userCountTextView sizeToFit];
+    self.userCountTextView.textAlignment = NSTextAlignmentCenter;
+    self.userCountTextView.editable = NO;
+    
     // UITextView-Member
-    NSMutableAttributedString *memberNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? {start}Login >{end}", nil) attributes:@{
+    NSMutableAttributedString *memberNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a member? {start}Login >{end}", @"Ask the user whether he/she has already registered on HealthTap") attributes:@{
                                                                                                                                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
     rangeOfStartNSString = [[memberNSMutableAttributedString string] rangeOfString:@"{start}"];
     rangeOfEndNSString = [[memberNSMutableAttributedString string] rangeOfString:@"{end}"];
@@ -104,7 +114,7 @@
     self.memberUITextView.editable = NO;
     
     // UITextView-Doctor
-    NSMutableAttributedString *doctorNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? {start}Try our doctor app >{end}", nil) attributes:@{
+    NSMutableAttributedString *doctorNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"Are you a doctor? {start}Try our doctor app >{end}", @"Ask the user whether he/she is not a patient but a doctor who should use another version of the app") attributes:@{
                                                                                                                                                                                      NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
     rangeOfStartNSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{start}"];
     rangeOfEndNSString = [[doctorNSMutableAttributedString string] rangeOfString:@"{end}"];

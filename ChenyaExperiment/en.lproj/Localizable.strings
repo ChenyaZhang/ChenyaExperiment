@@ -14,6 +14,8 @@
 
 "You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}" = "You agree to our {start}Terms{end} and {start1}Privacy Policy{end1}";
 
+"Now %1$@ registered users in total" = "Now %1$lu registered users in total";
+
 "Are you a member? {start}Login >{end}" = "Are you a member? {start}Login >{end}" ;
 
 "Are you a doctor? {start}Try our doctor app >{end}" = "Are you a doctor? {start}Try our doctor app >{end}";
