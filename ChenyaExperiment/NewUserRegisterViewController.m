@@ -86,8 +86,9 @@
     self.agreementUITextView.editable = NO;
     
     // UITextView-User Count
-    NSString *messageFormat = NSLocalizedString(@"Now %1$lu registered users in total", @"The parameter will be the current number of registered users.");
-    NSMutableAttributedString *userCountNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:messageFormat attributes:@{
+    int registeredUserCount = 3000000;
+    NSString *messageFormat = NSLocalizedString(@"Now %1$lu Registered Users in Total", @"The parameter will be the current number of registered users.");
+    NSMutableAttributedString *userCountNSMutableAttributedString = [[NSMutableAttributedString alloc] initWithString: [NSString stringWithFormat:messageFormat, registeredUserCount] attributes:@{
                                                                                                                                                                                                                                                                 NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:14.0]}];
     self.userCountTextView.attributedText = userCountNSMutableAttributedString;
     [self.userCountTextView sizeToFit];
